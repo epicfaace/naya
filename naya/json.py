@@ -542,7 +542,8 @@ def __parse(token_stream, first_token):
 
 def stream_array(token_stream):
     token_type, token = next(token_stream)
-
+    while (!(token_type != TOKEN_TYPE.OPERATOR or token != '[')):
+        token_type, token = next(token_stream)
     if token_type != TOKEN_TYPE.OPERATOR or token != '[':
         raise ValueError("Array must start with '['.  Got '{}'".format(token))
 
